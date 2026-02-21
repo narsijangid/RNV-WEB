@@ -47,9 +47,12 @@ function Navbar() {
     {
       name: "Services",
       subLinks: [
-        { name: "IT Staff Augmentation", href: "/services/it-staff-augmentation" },
-        { name: "Managed IT Infrastructure Services", href: "/services/managed-it-infrastructure" },
-        { name: "Data Engineering Consultings", href: "/services/data-engineering" },
+        { name: "Global Capability Center (GCC) Enablement", href: "/services/gcc-enablement" },
+        { name: "Digital Engineering", href: "/services/digital-engineering" },
+        { name: "Mobile Application Development", href: "/services/mobile-app-development" },
+        { name: "Cloud Native Development", href: "/services/cloud-native-development" },
+        { name: "AI & Intelligent Automation", href: "/services/ai-intelligent-automation" },
+        { name: "Agile Transformation", href: "/services/agile-transformation" },
       ],
     },
     {
@@ -198,7 +201,7 @@ function Navbar() {
       >
         <div className="container mx-auto">
           <nav
-            className="flex items-center justify-between py-4"
+            className="flex items-center justify-between py-1"
             role="navigation"
             aria-label="Primary navigation"
           >
@@ -211,9 +214,9 @@ function Navbar() {
                 <img
                   src="https://www.rinovea.com/images/logo1.png"
                   alt="Rinovea Logo"
-                  className="h-10 w-auto"
-                  width="150"
-                  height="40"
+                  className="h-16 w-auto object-contain"
+                  width="200"
+                  height="64"
                 />
               </Link>
             </div>
