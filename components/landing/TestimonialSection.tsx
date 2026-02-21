@@ -148,55 +148,7 @@ function Testimonial() {
           ))}
         </div>
 
-        <section
-          className="mt-10 sm:mt-12 md:mt-14 lg:mt-16"
-          aria-labelledby="stats-heading"
-          role="region"
-          ref={statsRef}
-        >
-          <h3 id="stats-heading" className="sr-only">
-            Impact metrics
-          </h3>
-          <div className="mx-auto max-w-7xl">
-            <div className="flex flex-col divide-y divide-gray-200 sm:divide-y-0 sm:flex-row sm:divide-x">
-              <div
-                className="flex flex-1 flex-col items-start px-4 py-4 sm:items-center sm:px-6 sm:py-6 md:py-0"
-                data-stat-item="true"
-              >
-                <div className="text-heading text-3xl font-semibold sm:text-4xl md:text-5xl">
-                  120+
-                </div>
-                <p className="text-label mt-1 text-sm sm:mt-2 sm:text-base">
-                  AI-powered projects delivered
-                </p>
-              </div>
 
-              <div
-                className="flex flex-1 flex-col items-start px-4 py-4 sm:items-center sm:px-6 sm:py-6 md:py-0"
-                data-stat-item="true"
-              >
-                <div className="text-heading text-3xl font-semibold sm:text-4xl md:text-5xl">
-                  50+
-                </div>
-                <p className="text-label mt-1 text-sm sm:mt-2 sm:text-base">
-                  Global clients we've partnered with
-                </p>
-              </div>
-
-              <div
-                className="flex flex-1 flex-col items-start px-4 py-4 sm:items-center sm:px-6 sm:py-6 md:py-0"
-                data-stat-item="true"
-              >
-                <div className="text-heading text-3xl font-semibold sm:text-4xl md:text-5xl">
-                  $50k+
-                </div>
-                <p className="text-label mt-1 text-sm sm:mt-2 sm:text-base">
-                  Monthly recurring revenue generated
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </section>
     </>
   );

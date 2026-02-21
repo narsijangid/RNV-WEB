@@ -3,6 +3,7 @@ import ContactSection from "@/components/landing/ContactSection";
 import HeroSection from "@/components/landing/HeroSection";
 import ProcessSection from "@/components/landing/ProcessSection";
 import StatsSection from "@/components/landing/StatsSection";
+import TechStackSection from "@/components/landing/TechStackSection";
 import TestimonialSection from "@/components/landing/TestimonialSection";
 import { generatePageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
@@ -18,6 +19,7 @@ export default function Home() {
         <CaseStudiesSection />
         <ProcessSection />
         <TestimonialSection />
+        <TechStackSection />
         <ContactSection />
       </div>
     </main>
