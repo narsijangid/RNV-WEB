@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { Github } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -11,30 +11,71 @@ import { Button } from "../ui/button";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+interface SubLink {
+  name: string;
+  href: string;
+  description?: string;
+}
+
+interface NavLink {
+  name: string;
+  href?: string;
+  description?: string;
+  subLinks?: SubLink[];
+}
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const pathname = usePathname();
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     {
-      name: "Home",
-      href: "/",
-      description: "Return to homepage",
+      name: "Products",
+      subLinks: [
+        { name: "Social", href: "/products/social" },
+        { name: "Conversational AI", href: "/products/conversational-ai" },
+        { name: "Computer Vision", href: "/products/computer-vision" },
+        { name: "AI-Powered Social Media Automation", href: "/products/social-media-automation" },
+      ],
+    },
+    {
+      name: "Services",
+      subLinks: [
+        { name: "IT Staff Augmentation", href: "/services/it-staff-augmentation" },
+        { name: "Managed IT Infrastructure Services", href: "/services/managed-it-infrastructure" },
+        { name: "Data Engineering Consultings", href: "/services/data-engineering" },
+      ],
+    },
+    {
+      name: "Industries",
+      subLinks: [
+        { name: "JIO", href: "/industries/jio" },
+      ],
+    },
+    {
+      name: "Thought Leadership",
+      subLinks: [
+        { name: "Blogs", href: "/blog" },
+        { name: "Success Stories", href: "/success-stories" },
+      ],
+    },
+    {
+      name: "Careers",
+      subLinks: [
+        { name: "Life at Rinovea", href: "/careers/life-at-rinovea" },
+        { name: "Current Opening", href: "/careers/openings" },
+      ],
     },
     {
       name: "About",
       href: "/about",
-      description: "Learn more about our company",
     },
-    {
-      name: "Blog",
-      href: "/blog",
-      description: "Read our latest AI insights and research",
-    }
   ];
 
   const toggleMenu = () => {
@@ -45,46 +86,30 @@ function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
     setActiveIndex(-1);
-    // Return focus to menu button when closing
     buttonRef.current?.focus();
   };
 
-  // Handle keyboard navigation
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    switch (event.key) {
-      case "ArrowDown":
-        event.preventDefault();
-        setActiveIndex((prev) => (prev + 1) % navLinks.length);
-        break;
-      case "ArrowUp":
-        event.preventDefault();
-        setActiveIndex((prev) => (prev - 1 + navLinks.length) % navLinks.length);
-        break;
-      case "Home":
-        event.preventDefault();
-        setActiveIndex(0);
-        break;
-      case "End":
-        event.preventDefault();
-        setActiveIndex(navLinks.length - 1);
-        break;
-      case "Escape":
-        closeMenu();
-        break;
+  // GSAP animation for dropdowns
+  useGSAP(() => {
+    if (openDropdown && dropdownRefs.current[openDropdown]) {
+      gsap.fromTo(
+        dropdownRefs.current[openDropdown],
+        { opacity: 0, y: 10, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }
+      );
     }
-  };
+  }, [openDropdown]);
 
-  // Handle escape key to close menu
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isMenuOpen) {
-        closeMenu();
+      if (event.key === "Escape") {
+        if (isMenuOpen) closeMenu();
+        setOpenDropdown(null);
       }
     };
 
+    document.addEventListener("keydown", handleEscape);
     if (isMenuOpen) {
-      document.addEventListener("keydown", handleEscape);
-      // Prevent body scroll when menu is open
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -94,16 +119,6 @@ function Navbar() {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
     };
-  }, [isMenuOpen]);
-
-  // Focus management for mobile menu
-  useEffect(() => {
-    if (isMenuOpen && menuRef.current) {
-      const firstLink = menuRef.current.querySelector("a") as HTMLAnchorElement;
-      if (firstLink) {
-        firstLink.focus();
-      }
-    }
   }, [isMenuOpen]);
 
   useGSAP(() => {
@@ -124,8 +139,7 @@ function Navbar() {
       end: "max",
       onUpdate: (self) => {
         const scrolled = self.scroll();
-        // Keep visible when menu is open
-        if (isMenuOpen) {
+        if (isMenuOpen || openDropdown) {
           if (isHidden) {
             isHidden = false;
           }
@@ -133,7 +147,6 @@ function Navbar() {
           return;
         }
 
-        // Always show at the very top
         if (scrolled <= 0) {
           if (isHidden) {
             isHidden = false;
@@ -143,18 +156,16 @@ function Navbar() {
         }
 
         if (self.direction === 1) {
-          // Scrolling down → hide
           if (!isHidden) {
             isHidden = true;
             gsap.to(headerEl, {
-              y: -headerHeight,
+              y: -headerHeight - 20,
               duration: 0.45,
               ease: "power2.out",
               overwrite: "auto",
             });
           }
         } else if (self.direction === -1) {
-          // Scrolling up → show
           if (isHidden) {
             isHidden = false;
             gsap.to(headerEl, { y: 0, duration: 0.45, ease: "power2.out", overwrite: "auto" });
@@ -168,11 +179,10 @@ function Navbar() {
       window.removeEventListener("resize", onResize);
       gsap.set(headerEl, { y: 0 });
     };
-  }, []);
+  }, [isMenuOpen, openDropdown]);
 
   return (
     <>
-      {/* Skip to main content link for screen readers */}
       <a
         href="#main-content"
         className="focus:bg-primary focus:text-primary-foreground focus:ring-ring !sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:ring-2 focus:ring-offset-2 focus:outline-none"
@@ -182,9 +192,9 @@ function Navbar() {
 
       <header
         ref={navRef}
-        className="bg-background fixed inset-x-0 top-2 z-40 mx-auto w-full max-w-6xl rounded-lg px-5"
+        className="bg-white/10 fixed inset-x-0 top-0 z-40 mx-auto w-full max-w-7xl rounded-b-xl px-5 backdrop-blur-2xl border border-white/20 shadow-lg"
         role="banner"
-        aria-label="Main navigation"
+        onMouseLeave={() => setOpenDropdown(null)}
       >
         <div className="container mx-auto">
           <nav
@@ -192,167 +202,148 @@ function Navbar() {
             role="navigation"
             aria-label="Primary navigation"
           >
-            {/* Logo */}
             <div className="flex items-center">
               <Link
                 href="/"
                 className="focus:ring-ring flex items-center gap-2 rounded-md transition-opacity hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:outline-none"
                 aria-label="Rinovea - Return to homepage"
-                aria-describedby="logo-description"
               >
                 <img
                   src="https://www.rinovea.com/images/logo1.png"
                   alt="Rinovea Logo"
-                  className="h-8 w-auto"
-                  width="120"
-                  height="32"
-                  aria-hidden="true"
+                  className="h-10 w-auto"
+                  width="150"
+                  height="40"
                 />
-                <span id="logo-description" className="sr-only">
-                  Rinovea - Leading digital solutions provider
-                </span>
               </Link>
             </div>
 
-            <ul
-              className="hidden items-center space-x-6 lg:flex"
-              role="menubar"
-              aria-label="Main navigation menu"
-            >
-              {navLinks.map((link, index) => {
-                const isActive =
-                  pathname === link.href || (link.href.startsWith("/#") && pathname === "/");
+            <ul className="hidden items-center space-x-1 lg:flex" role="menubar">
+              {navLinks.map((link) => {
+                const hasSubLinks = link.subLinks && link.subLinks.length > 0;
+                const isActive = pathname === link.href || link.subLinks?.some(sub => pathname === sub.href);
 
                 return (
-                  <li key={link.name} role="none">
-                    <Link
-                      href={link.href}
-                      className={`text-text-heading hover:text-foreground focus:ring-ring rounded-md px-2 py-1 !text-sm font-medium transition-colors focus:ring-0 focus:outline-none ${isActive ? "text-foreground font-normal" : "text-foreground/70"
-                        }`}
-                      role="menuitem"
-                      aria-describedby={`nav-description-${index}`}
-                      onFocus={() => setActiveIndex(index)}
-                      onBlur={() => setActiveIndex(-1)}
-                    >
-                      {link.name}
-                      <span id={`nav-description-${index}`} className="sr-only">
-                        {link.description}
-                      </span>
-                    </Link>
+                  <li
+                    key={link.name}
+                    role="none"
+                    className="relative"
+                    onMouseEnter={() => hasSubLinks && setOpenDropdown(link.name)}
+                  >
+                    {link.href ? (
+                      <Link
+                        href={link.href}
+                        className={`hover:bg-accent hover:text-accent-foreground focus:ring-ring flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none ${isActive ? "bg-accent/50 text-foreground" : "text-foreground/70"
+                          }`}
+                        role="menuitem"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <button
+                        className={`hover:bg-accent hover:text-accent-foreground focus:ring-ring flex items-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none ${isActive || openDropdown === link.name ? "bg-accent/50 text-foreground" : "text-foreground/70"
+                          }`}
+                        role="menuitem"
+                        aria-expanded={openDropdown === link.name}
+                        onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+                      >
+                        {link.name}
+                        {hasSubLinks && (
+                          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openDropdown === link.name ? "rotate-180" : ""}`} />
+                        )}
+                      </button>
+                    )}
+
+                    {hasSubLinks && openDropdown === link.name && (
+                      <div
+                        ref={(el) => { dropdownRefs.current[link.name] = el }}
+                        className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-border bg-background p-2 shadow-xl"
+                        role="menu"
+                      >
+                        {link.subLinks?.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className="hover:bg-accent block rounded-lg px-4 py-2 text-sm text-foreground/70 transition-colors hover:text-foreground"
+                            role="menuitem"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </li>
                 );
               })}
             </ul>
 
             <div className="flex items-center gap-3">
-              {/* GitHub Icon */}
-              <Link
-                href="https://github.com/pinak3748"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="focus:ring-ring flex items-center justify-center rounded-md p-2 transition-colors hover:bg-accent"
-                aria-label="Visit our GitHub repository"
-              >
-                <Github className="h-5 w-5 text-primary" />
-              </Link>
-
               <Button
                 size={"sm"}
-                className="text-sm"
-                aria-label="Contact us to start working together"
+                className="hidden text-sm sm:flex font-semibold px-6 rounded-full"
+                aria-label="Enquire about our services"
               >
-                Work with us
+                Enquire
               </Button>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
-              <button
-                ref={buttonRef}
-                onClick={toggleMenu}
-                className="relative inline-flex h-10 w-10 items-center justify-center rounded-md outline-none focus:ring-0 focus:outline-none"
-                aria-expanded={isMenuOpen}
-                aria-controls="mobile-menu"
-                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                aria-haspopup="true"
-              >
-                <span
-                  aria-hidden="true"
-                  className={`bg-foreground absolute left-1/2 block h-0.5 w-6 -translate-x-1/2 rounded-sm transition-all duration-200 ease-in-out ${isMenuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-3 rotate-0"
-                    }`}
-                />
-                <span
-                  aria-hidden="true"
-                  className={`bg-foreground absolute left-1/2 block h-0.5 w-6 -translate-x-1/2 rounded-sm transition-all duration-200 ease-in-out ${isMenuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-5 rotate-0"
-                    }`}
-                />
-                <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
-              </button>
+              <div className="lg:hidden">
+                <button
+                  ref={buttonRef}
+                  onClick={toggleMenu}
+                  className="relative inline-flex h-10 w-10 items-center justify-center rounded-md outline-none focus:ring-0"
+                  aria-expanded={isMenuOpen}
+                  aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                >
+                  <span
+                    className={`bg-foreground absolute left-1/2 block h-0.5 w-6 -translate-x-1/2 rounded-sm transition-all duration-200 ${isMenuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-3.5"}`}
+                  />
+                  <span
+                    className={`bg-foreground absolute left-1/2 block h-0.5 w-6 -translate-x-1/2 rounded-sm transition-all duration-200 ${isMenuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "top-5.5"}`}
+                  />
+                </button>
+              </div>
             </div>
           </nav>
 
-          {/* Mobile Navigation Menu */}
           {isMenuOpen && (
             <div
-              className="lg:hidden"
               ref={menuRef}
+              className="lg:hidden animate-in fade-in slide-in-from-top-4 duration-300 pb-8 bg-background rounded-b-xl"
               id="mobile-menu"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Mobile navigation menu"
             >
-              <div className="">
-                <div className="space-y-2 px-2 py-4">
-                  <ul className="space-y-2" role="menu" aria-label="Mobile navigation options">
-                    {navLinks.map((link, index) => {
-                      const isActive =
-                        pathname === link.href || (link.href.startsWith("/#") && pathname === "/");
-
-                      return (
-                        <li key={link.name} role="none">
-                          <Link
-                            href={link.href}
-                            className={`hover:bg-accent hover:text-accent-foreground block rounded-md px-3 py-2 text-base font-medium transition-colors focus:outline-none ${activeIndex === index || isActive
-                              ? "bg-accent text-accent-foreground"
-                              : "text-foreground/70"
-                              }`}
-                            role="menuitem"
-                            tabIndex={activeIndex === index ? 0 : -1}
-                            aria-describedby={`mobile-nav-description-${index}`}
-                            onClick={closeMenu}
-                            onKeyDown={(e) => handleKeyDown(e)}
-                          >
-                            {link.name}
-                            <span id={`mobile-nav-description-${index}`} className="sr-only">
-                              {link.description}
-                            </span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className="border-t pt-4 space-y-3">
-                    {/* GitHub Link */}
-                    <Link
-                      href="https://github.com/ionio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none"
-                      aria-label="Visit our GitHub repository"
-                      onClick={closeMenu}
-                    >
-                      <Github className="h-5 w-5 text-primary" />
-                      GitHub
-                    </Link>
-
-                    <Button
-                      className="w-full"
-                      aria-label="Contact us to start working together"
-                      onClick={closeMenu}
-                    >
-                      Work with us
-                    </Button>
+              <div className="space-y-4 px-2 py-4 max-h-[70vh] overflow-y-auto">
+                {navLinks.map((link) => (
+                  <div key={link.name} className="space-y-2">
+                    {link.href ? (
+                      <Link
+                        href={link.href}
+                        className="block px-3 py-2 text-lg font-semibold text-foreground"
+                        onClick={closeMenu}
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <div className="px-3 py-2 text-lg font-semibold text-foreground/50 uppercase tracking-wider text-xs">
+                        {link.name}
+                      </div>
+                    )}
+                    {link.subLinks?.map((sub) => (
+                      <Link
+                        key={sub.name}
+                        href={sub.href}
+                        className="block rounded-md px-6 py-2 text-base font-medium text-foreground/70 hover:bg-accent hover:text-foreground transition-colors"
+                        onClick={closeMenu}
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
                   </div>
+                ))}
+                <div className="border-t border-white/10 pt-4 px-3 space-y-4">
+                  <Button className="w-full rounded-full" onClick={closeMenu}>
+                    Enquire
+                  </Button>
                 </div>
               </div>
             </div>

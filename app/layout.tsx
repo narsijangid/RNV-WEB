@@ -1,5 +1,6 @@
 import Footer from "@/components/custom/Footer";
 import Navbar from "@/components/custom/Navbar";
+import Script from "next/script";
 import "@/lib/GSAPAnimations";
 import { defaultMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
@@ -31,6 +32,10 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <Script
+          src="https://cdn.jotfor.ms/agent/embedjs/019c80086156706ea95ee4092bcb885e252b/embed.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
