@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function LifeAtRinovea() {
@@ -169,6 +171,224 @@ export default function LifeAtRinovea() {
                     </div>
                 </div>
             </section>
+            {/* Team Members Section */}
+            <section className="py-24 bg-gray-50 overflow-hidden">
+                <div className="container mx-auto px-4 mb-12">
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                            The Brains Behind Our <span className="text-blue-600">Innovation</span>
+                        </h2>
+                        <p className="text-lg text-gray-600">
+                            Our team of creative minds and technical experts is dedicated to delivering excellence and pushing the boundaries of what's possible.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="relative flex overflow-x-hidden">
+                    <div className="flex animate-marquee-custom whitespace-nowrap py-12">
+                        {[...members, ...members, ...members, ...members].map((member, index) => (
+                            <div
+                                key={index}
+                                className="inline-block px-4"
+                            >
+                                <div className="group relative w-[280px] h-[400px] bg-white rounded-[1.5rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-700 hover:shadow-[0_15px_60px_rgba(59,130,246,0.12)]">
+                                    {/* Member Image */}
+                                    <img
+                                        src={member.photo}
+                                        alt={member.name}
+                                        className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                                    />
+
+                                    {/* Glassmorphism Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-all duration-700"></div>
+                                    <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 backdrop-blur-[1px]"></div>
+
+                                    {/* Content Container */}
+                                    <div className="absolute inset-x-0 bottom-0 p-6 pt-0">
+                                        <div className="relative z-10">
+                                            {/* Name & Role Wrapper */}
+                                            <div className="transform transition-transform duration-700 ease-in-out translate-y-10 group-hover:translate-y-0">
+                                                {/* Name & Role */}
+                                                <div className="mb-3">
+                                                    <h4 className="text-xl font-bold text-white mb-1.5 tracking-tight flex items-center gap-2">
+                                                        {member.name}
+                                                        {(member.name === "Shrish Sontakke" || member.name === "Rakhee Hande") && (
+                                                            <img
+                                                                src="https://cdn.pixabay.com/photo/2021/08/07/22/30/verified-6529507_960_720.png"
+                                                                alt="Verified"
+                                                                className="w-5 h-5 object-contain"
+                                                            />
+                                                        )}
+                                                    </h4>
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="h-[1px] w-3 bg-orange-400 group-hover:w-6 transition-all duration-700"></span>
+                                                        <p className="text-[9px] font-bold text-orange-300 uppercase tracking-[0.2em] leading-none">{member.role}</p>
+                                                    </div>
+                                                </div>
+
+                                                {/* Hidden Button - Animates in */}
+                                                {member.linkedin && member.linkedin !== "#" && (
+                                                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 pt-1.5 pb-1.5">
+                                                        <a
+                                                            href={member.linkedin}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-orange-500 text-white border border-white/20 hover:border-orange-500 backdrop-blur-md rounded-xl text-[10px] font-bold transition-all duration-300 group/btn"
+                                                        >
+                                                            View Profile
+                                                            <svg className="w-3 h-3 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                )}
+
+                                                {/* Animated Divider */}
+                                                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mt-1.5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    @keyframes marquee-left-to-right {
+                        0% { transform: translateX(-50%); }
+                        100% { transform: translateX(0); }
+                    }
+                    .animate-marquee-custom {
+                        display: flex;
+                        animation: marquee-left-to-right 40s linear infinite;
+                    }
+                    .animate-marquee-custom:hover {
+                        animation-play-state: paused;
+                    }
+                ` }} />
+            </section>
+
+            {/* What Can You Expect Section */}
+            <ExpectSection />
         </main>
     );
 }
+
+import React from "react";
+
+function ExpectSection() {
+    const [activeTab, setActiveTab] = React.useState(0);
+
+    const expectations = [
+        {
+            title: "Work Flexibility",
+            content: "Embrace new ways of working with Rinovea; we support our workforce with solutions that show them how they can perform at their best and be their most productive at the office."
+        },
+        {
+            title: "Collaborative Team",
+            content: "Collaborating is hard, but Rinovea makes it simple. At Rinovea, you will find people sharing common beliefs and working towards common goals."
+        },
+        {
+            title: "Open Environment",
+            content: "Talk Less, Listen more; we believe in listening and encouraging open communication across the organization to boost our colleague's morale and confidence."
+        },
+        {
+            title: "Healthcare Benefits",
+            content: "Our employees are our second family, and taking care of their well-being is our priority. We provide healthcare benefits to our employees to keep them safe, happy, and healthy."
+        },
+        {
+            title: "Strong Cultural Values",
+            content: "At Rinovea, we build a culture that aligns with our people's values because a great culture provides continuous alignment to the vision, purpose, and goals of the organization."
+        }
+    ];
+
+    return (
+        <section className="py-20 bg-[#eef7ff]">
+            <div className="container mx-auto px-4 max-w-6xl">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                    {/* Left Side: Heading */}
+                    <div className="lg:w-1/3 text-left">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5 leading-tight">
+                            What Can You Expect <br /> <span className="text-blue-600">From us?</span>
+                        </h2>
+                        <p className="text-gray-600 text-base leading-relaxed">
+                            We are committed to creating an environment where excellence is recognized, and every team member has the support they need to thrive.
+                        </p>
+                    </div>
+
+                    {/* Right Side: Interactive Tabs & Content */}
+                    <div className="lg:w-2/3 flex flex-col md:flex-row items-start gap-0 w-full group/main">
+                        {/* Tabs List */}
+                        <div className="flex flex-col w-full md:w-1/2 bg-white/50 backdrop-blur-sm rounded-l-2xl overflow-hidden border-r border-blue-100 shadow-sm">
+                            {expectations.map((item, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setActiveTab(index)}
+                                    className={`relative px-7 py-5 text-left transition-all duration-300 flex items-center justify-between cursor-pointer ${activeTab === index
+                                            ? "text-blue-600 bg-white font-bold"
+                                            : "text-gray-500 hover:text-gray-800 hover:bg-white/30"
+                                        }`}
+                                >
+                                    <span className="text-base md:text-lg whitespace-nowrap">{item.title}</span>
+                                    {activeTab === index && (
+                                        <div className="absolute right-0 top-0 bottom-0 w-1 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                                    )}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Content Display Card */}
+                        <div className="w-full md:w-1/2 min-h-[260px] flex items-center bg-white p-8 md:p-10 rounded-r-2xl shadow-[20px_0_40px_rgba(0,0,0,0.02)] border-y border-r border-blue-50">
+                            <div className="animate-in fade-in slide-in-from-right-4 duration-500">
+                                <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium transition-all duration-300">
+                                    {expectations[activeTab].content}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+const members = [
+    {
+        name: "Shrish Sontakke",
+        role: "Founder & CEO at Rinovea",
+        photo: "https://media.licdn.com/dms/image/v2/D4D03AQGnLK5Gko9-ng/profile-displayphoto-shrink_800_800/B4DZeEDfGgGUAc-/0/1750267197164?e=1773273600&v=beta&t=3mnaDcYe650niSmxVopvm0pjN2wUWqsTg2gBAqroPtU",
+        linkedin: "https://www.linkedin.com/in/shrish-sontakke/"
+    },
+    {
+        name: "Rakhee Hande",
+        role: "Co-Founder & HR",
+        photo: "https://media.licdn.com/dms/image/v2/D4E03AQGWT8PmHobBWw/profile-displayphoto-crop_800_800/B4EZitGxvOHgAM-/0/1755250892524?e=1773273600&v=beta&t=UCziLGHYSuP6Kiph9JP-WOu8Tb-5wcBdZtz1o_-eIbw",
+        linkedin: "https://www.linkedin.com/in/rakhee-hande-051235374/"
+    },
+    {
+        name: "Pratiksha Shukla",
+        role: "Senior Software Engineer",
+        photo: "https://media.licdn.com/dms/image/v2/D4D03AQErJXASGLdPOg/profile-displayphoto-crop_800_800/B4DZv.VVbhGUAI-/0/1769498566199?e=1773273600&v=beta&t=-qRa1v3xGw0s4uQ3BdNLvmQO0LVil07ODHDJ6Ruil3k",
+        linkedin: "https://www.linkedin.com/in/pratiksha-shukla-256b43208/"
+    },
+    {
+        name: "Narsi Jangid",
+        role: "Full Stack developer",
+        photo: "https://media.licdn.com/dms/image/v2/D5603AQEU78-jGQrm1g/profile-displayphoto-scale_400_400/B56ZjlcfJeHUAk-/0/1756196107512?e=1773273600&v=beta&t=O5HdvRdAzO9qAXxsnVZnYdkmsz88vbujbkt1BRpmlLE",
+        linkedin: "https://www.linkedin.com/in/narsijangid/"
+    },
+    {
+        name: "Om Ghulaxe",
+        role: "Full stack developer",
+        photo: "https://media.licdn.com/dms/image/v2/D5603AQFdJPtHxQeIoA/profile-displayphoto-crop_800_800/B56ZpFbkW5KEAI-/0/1762101446951?e=1773273600&v=beta&t=q4s0C3jGSTIC1KCJiwda6Vziji2iyujI6rQHUWCo2AU",
+        linkedin: "https://www.linkedin.com/in/om-ghulaxe/"
+    },
+    {
+        name: "Deepak Lasod",
+        role: "SDE-II, Full stack developer",
+        photo: "https://media.licdn.com/dms/image/v2/D4D03AQHUsIuwZKvq5g/profile-displayphoto-shrink_800_800/B4DZc08SMyGwAc-/0/1748939909568?e=1773273600&v=beta&t=nqo725hRLppSqHJZnMzZOB3Bi20wX_sAdxdbLAKe9xA",
+        linkedin: "https://www.linkedin.com/in/deepak-lasod-78113b110/"
+    }
+];

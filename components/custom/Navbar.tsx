@@ -17,11 +17,18 @@ interface SubLink {
   description?: string;
 }
 
+interface NavCategory {
+  title: string;
+  links: SubLink[];
+}
+
 interface NavLink {
   name: string;
   href?: string;
   description?: string;
   subLinks?: SubLink[];
+  categories?: NavCategory[];
+  isMega?: boolean;
 }
 
 function Navbar() {
@@ -46,19 +53,49 @@ function Navbar() {
     },
     {
       name: "Services",
-      subLinks: [
-        { name: "Global Capability Center (GCC) Enablement", href: "/services/gcc-enablement" },
-        { name: "Digital Engineering", href: "/services/digital-engineering" },
-        { name: "Mobile Application Development", href: "/services/mobile-app-development" },
-        { name: "Cloud Native Development", href: "/services/cloud-native-development" },
-        { name: "AI & Intelligent Automation", href: "/services/ai-intelligent-automation" },
-        { name: "Agile Transformation", href: "/services/agile-transformation" },
+      isMega: true,
+      categories: [
+        {
+          title: "Custom Software Development",
+          links: [
+            { name: "Web Development", href: "/services/web-development" },
+          ]
+        },
+        {
+          title: "AI & Data Solutions",
+          links: [
+            { name: "Generative AI", href: "/services/generative-ai" },
+          ]
+        },
+        {
+          title: "Mobile App Development",
+          links: [
+            { name: "Web view mobile application", href: "/services/web-view-mobile-app" },
+          ]
+        },
+        {
+          title: "Industry Solutions",
+          links: [
+            { name: "Food Delivery App", href: "/industries/food-delivery" },
+            { name: "eLearning & EdTech", href: "/industries/education-elearning" },
+            { name: "Travel App Development", href: "/industries/travel" },
+            { name: "Ecommerce", href: "/industries/e-commerce" },
+          ]
+        },
+        {
+          title: "QA & Testing",
+          links: [
+            { name: "API & Integration", href: "/services/api-integration" },
+          ]
+        }
       ],
     },
     {
       name: "Industries",
       subLinks: [
-        { name: "JIO", href: "/industries/jio" },
+        { name: "E-Commerce", href: "/industries/e-commerce" },
+        { name: "Entertainment", href: "/industries/entertainment" },
+        { name: "Education & eLearning", href: "/industries/education-elearning" },
       ],
     },
     {
@@ -223,8 +260,8 @@ function Navbar() {
 
             <ul className="hidden items-center space-x-1 lg:flex" role="menubar">
               {navLinks.map((link) => {
-                const hasSubLinks = link.subLinks && link.subLinks.length > 0;
-                const isActive = pathname === link.href || link.subLinks?.some(sub => pathname === sub.href);
+                const hasSubLinks = (link.subLinks && link.subLinks.length > 0) || (link.categories && link.categories.length > 0);
+                const isActive = pathname === link.href || link.subLinks?.some(sub => pathname === sub.href) || link.categories?.some(cat => cat.links.some(l => pathname === l.href));
 
                 return (
                   <li
@@ -260,20 +297,133 @@ function Navbar() {
                     {hasSubLinks && openDropdown === link.name && (
                       <div
                         ref={(el) => { dropdownRefs.current[link.name] = el }}
-                        className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-border bg-background p-2 shadow-xl"
+                        className={`absolute top-full mt-1.5 rounded-xl border border-border bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] ${link.isMega ? "left-1/2 -translate-x-1/2 w-[700px]" : "left-0 w-64"}`}
                         role="menu"
                       >
-                        {link.subLinks?.map((sub) => (
-                          <Link
-                            key={sub.name}
-                            href={sub.href}
-                            className="hover:bg-accent block rounded-lg px-4 py-2 text-sm text-foreground/70 transition-colors hover:text-foreground"
-                            role="menuitem"
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {sub.name}
-                          </Link>
-                        ))}
+                        {link.isMega ? (
+                          <div className="grid grid-cols-3 gap-x-8 gap-y-8">
+                            {/* Column 1 */}
+                            <div className="space-y-8">
+                              {link.categories?.slice(0, 1).map((cat) => (
+                                <div key={cat.title} className="space-y-3">
+                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <div className="space-y-0.5">
+                                    {cat.links?.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.href}
+                                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] font-medium text-foreground/70 transition-all hover:bg-accent hover:text-foreground group"
+                                        role="menuitem"
+                                        onClick={() => setOpenDropdown(null)}
+                                      >
+                                        <ChevronDown className="h-2.5 w-2.5 -rotate-90 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                        {sub.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                              {link.categories?.slice(3, 4).map((cat) => (
+                                <div key={cat.title} className="space-y-3">
+                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <div className="space-y-0.5">
+                                    {cat.links?.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.href}
+                                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] font-medium text-foreground/70 transition-all hover:bg-accent hover:text-foreground group"
+                                        role="menuitem"
+                                        onClick={() => setOpenDropdown(null)}
+                                      >
+                                        <ChevronDown className="h-2.5 w-2.5 -rotate-90 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                        {sub.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Column 2 */}
+                            <div className="space-y-8">
+                              {link.categories?.slice(1, 2).map((cat) => (
+                                <div key={cat.title} className="space-y-3">
+                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <div className="space-y-0.5">
+                                    {cat.links?.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.href}
+                                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] font-medium text-foreground/70 transition-all hover:bg-accent hover:text-foreground group"
+                                        role="menuitem"
+                                        onClick={() => setOpenDropdown(null)}
+                                      >
+                                        <ChevronDown className="h-2.5 w-2.5 -rotate-90 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                        {sub.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                              {link.categories?.slice(4, 5).map((cat) => (
+                                <div key={cat.title} className="space-y-3">
+                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <div className="space-y-0.5">
+                                    {cat.links?.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.href}
+                                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] font-medium text-foreground/70 transition-all hover:bg-accent hover:text-foreground group"
+                                        role="menuitem"
+                                        onClick={() => setOpenDropdown(null)}
+                                      >
+                                        <ChevronDown className="h-2.5 w-2.5 -rotate-90 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                        {sub.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Column 3 */}
+                            <div className="space-y-8">
+                              {link.categories?.slice(2, 3).map((cat) => (
+                                <div key={cat.title} className="space-y-3">
+                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <div className="space-y-0.5">
+                                    {cat.links?.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.href}
+                                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] font-medium text-foreground/70 transition-all hover:bg-accent hover:text-foreground group"
+                                        role="menuitem"
+                                        onClick={() => setOpenDropdown(null)}
+                                      >
+                                        <ChevronDown className="h-2.5 w-2.5 -rotate-90 text-foreground/20 group-hover:text-foreground/40 transition-colors" />
+                                        {sub.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="space-y-0.5">
+                            {link.subLinks?.map((sub) => (
+                              <Link
+                                key={sub.name}
+                                href={sub.href}
+                                className="hover:bg-accent block rounded-md px-3 py-1.5 text-xs text-foreground/70 transition-colors hover:text-foreground"
+                                role="menuitem"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </li>
@@ -341,6 +491,23 @@ function Navbar() {
                         {sub.name}
                       </Link>
                     ))}
+                    {link.categories?.map((cat) => (
+                      <div key={cat.title} className="space-y-1">
+                        <div className="px-6 py-1 text-xs font-bold text-foreground/40 uppercase tracking-wider">
+                          {cat.title}
+                        </div>
+                        {cat.links.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className="block rounded-md px-8 py-2 text-base font-medium text-foreground/70 hover:bg-accent hover:text-foreground transition-colors"
+                            onClick={closeMenu}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
                   </div>
                 ))}
                 <div className="border-t border-white/10 pt-4 px-3 space-y-4">
@@ -358,3 +525,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
