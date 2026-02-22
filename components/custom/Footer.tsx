@@ -25,13 +25,13 @@ function Footer() {
       <div
         className="relative w-full bg-transparent"
         role="img"
-        aria-label="Books landscape background decorative banner"
+        aria-label="Halftone dot pattern background decorative banner"
       >
         <img
           ref={imageRef}
-          className="h-[36vh] w-full object-cover sm:h-[48vh] md:h-[64vh] lg:h-[70vh]"
-          src="https://pbs.twimg.com/media/GxtkGthWsAAPR6-?format=jpg&name=4096x4096"
-          alt="Books landscape background"
+          className="h-[36vh] w-full object-cover rounded-t-[2.5rem] sm:h-[48vh] sm:rounded-t-[4rem] md:h-[64vh] lg:h-[70vh]"
+          src="https://img.freepik.com/free-vector/halftone-dot-pattern-background-vector-illustration-from-circles-varying-sizes_1164-1418.jpg?semt=ais_user_personalization&w=740&q=80"
+          alt="Halftone dot pattern background"
         />
         <h5
           ref={marqueeRef}
@@ -41,7 +41,7 @@ function Footer() {
             {["R", "I", "N", "O", "V", "E", "A"].map((char, idx) => (
               <span
                 key={`rinovea-outline-${idx}`}
-                className={`text-primary-foreground/80 footer-slang font-extrabold uppercase`}
+                className={`${idx === 0 ? "text-orange-500" : "text-primary-foreground/80"} footer-slang font-extrabold uppercase`}
               >
                 {char}
               </span>

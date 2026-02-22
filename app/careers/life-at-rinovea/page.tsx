@@ -327,8 +327,8 @@ function ExpectSection() {
                                     key={index}
                                     onClick={() => setActiveTab(index)}
                                     className={`relative px-7 py-5 text-left transition-all duration-300 flex items-center justify-between cursor-pointer ${activeTab === index
-                                            ? "text-blue-600 bg-white font-bold"
-                                            : "text-gray-500 hover:text-gray-800 hover:bg-white/30"
+                                        ? "text-blue-600 bg-white font-bold"
+                                        : "text-gray-500 hover:text-gray-800 hover:bg-white/30"
                                         }`}
                                 >
                                     <span className="text-base md:text-lg whitespace-nowrap">{item.title}</span>

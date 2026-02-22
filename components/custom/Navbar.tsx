@@ -59,6 +59,8 @@ function Navbar() {
           title: "Custom Software Development",
           links: [
             { name: "Web Development", href: "/services/web-development" },
+            { name: "UI & UX Design", href: "/services/ui-ux-design" },
+            { name: "Enterprise Software", href: "/services/enterprise-software" },
           ]
         },
         {
@@ -80,6 +82,9 @@ function Navbar() {
             { name: "eLearning & EdTech", href: "/industries/education-elearning" },
             { name: "Travel App Development", href: "/industries/travel" },
             { name: "Ecommerce", href: "/industries/e-commerce" },
+            { name: "FinTech & Financial Services", href: "/industries/fintech" },
+            { name: "Healthcare & HealthTech", href: "/industries/healthcare" },
+            { name: "Logistics & Supply Chain", href: "/industries/logistics" },
           ]
         },
         {
@@ -115,6 +120,10 @@ function Navbar() {
     {
       name: "About",
       href: "/about",
+    },
+    {
+      name: "Contact Us",
+      href: "/contact",
     },
   ];
 
@@ -160,6 +169,11 @@ function Navbar() {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    // Refresh ScrollTrigger on pathname change to ensure correct positions
+    ScrollTrigger.refresh();
+  }, [pathname]);
 
   useGSAP(() => {
     const headerEl = navRef.current;
@@ -219,7 +233,7 @@ function Navbar() {
       window.removeEventListener("resize", onResize);
       gsap.set(headerEl, { y: 0 });
     };
-  }, [isMenuOpen, openDropdown]);
+  }, [isMenuOpen, openDropdown, pathname]);
 
   return (
     <>
@@ -245,7 +259,7 @@ function Navbar() {
             <div className="flex items-center">
               <Link
                 href="/"
-                className="focus:ring-ring flex items-center gap-2 rounded-md transition-opacity hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                className="flex items-center gap-2 rounded-md transition-opacity hover:opacity-80 focus:outline-none"
                 aria-label="Rinovea - Return to homepage"
               >
                 <img
@@ -432,13 +446,15 @@ function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3">
-              <Button
-                size={"sm"}
-                className="hidden text-sm sm:flex font-semibold px-6 rounded-full"
-                aria-label="Enquire about our services"
-              >
-                Enquire
-              </Button>
+              <Link href="/contact#contact-form">
+                <Button
+                  size={"sm"}
+                  className="hidden text-sm sm:flex font-semibold px-6 rounded-[8px] cursor-pointer"
+                  aria-label="Enquire about our services"
+                >
+                  Enquire
+                </Button>
+              </Link>
 
               <div className="lg:hidden">
                 <button
@@ -511,9 +527,11 @@ function Navbar() {
                   </div>
                 ))}
                 <div className="border-t border-white/10 pt-4 px-3 space-y-4">
-                  <Button className="w-full rounded-full" onClick={closeMenu}>
-                    Enquire
-                  </Button>
+                  <Link href="/contact#contact-form" className="w-full" onClick={closeMenu}>
+                    <Button className="w-full rounded-[8px] cursor-pointer">
+                      Enquire
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

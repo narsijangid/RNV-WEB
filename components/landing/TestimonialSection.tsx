@@ -28,8 +28,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ item, index }) => {
     >
       <div className="flex aspect-video items-center justify-center overflow-hidden rounded-t-md">
         <img
-          src={item.test_img}
-          className="aspect-video h-full w-full object-cover"
+          src="https://media.licdn.com/dms/image/v2/D4D0BAQEZvKfQqP99kQ/company-logo_200_200/B4DZihuDRiGsBg-/0/1755059861104/rinovea_logo?e=2147483647&v=beta&t=31IEen6vlTikENrw-g-e3l2bZqB4DU4UgU2RWJ14pSU"
+          className="aspect-video h-full w-full object-contain p-8 bg-slate-50"
           alt={`${item.name} project preview image`}
           loading="lazy"
           decoding="async"
