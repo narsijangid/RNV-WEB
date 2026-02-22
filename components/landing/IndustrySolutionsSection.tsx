@@ -86,7 +86,7 @@ export function IndustrySolutionsSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-20 space-y-4">
                     <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                        Industries <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">We Serve</span>
+                        Industries <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-700">We Serve</span>
                     </h2>
                     <p className="text-slate-600 max-w-3xl mx-auto text-base md:text-lg font-medium leading-relaxed">
                         Driving global innovation across Finance, Healthcare, EdTech, and SaaS with <br className="hidden md:block" />
@@ -228,7 +228,7 @@ function SolutionCard({ solution }: { solution: typeof solutions[0] }) {
                 ref={infoCardRef}
                 className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[110%] w-[120%] min-h-[140px] bg-white/20 backdrop-blur-md backdrop-brightness-125 backdrop-saturate-150 border border-white/10 rounded-[32px] p-6 shadow-2xl opacity-0 scale-[0.98] flex items-center justify-center text-center z-[5] pointer-events-none"
             >
-                <p className="text-black text-[13px] md:text-sm font-bold leading-relaxed">
+                <p className="text-slate-900 text-[13px] md:text-sm font-medium leading-relaxed">
                     {displayText}
                 </p>
             </div>

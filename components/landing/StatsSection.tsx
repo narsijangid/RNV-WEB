@@ -10,14 +10,14 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const stats = [
     {
         id: 1,
-        value: 500,
+        value: 10,
         suffix: "+",
         label: "Websites Built",
         icon: "https://r2-storage.dignizant.com/dev/webBuild.svg",
     },
     {
         id: 2,
-        value: 100,
+        value: 10,
         suffix: "+",
         label: "Skilled Experts",
         icon: "https://r2-storage.dignizant.com/dev/teamMember.svg",
@@ -31,7 +31,7 @@ const stats = [
     },
     {
         id: 4,
-        value: 250,
+        value: 5,
         suffix: "+",
         label: "Happy Global Clients",
         icon: "https://r2-storage.dignizant.com/dev/Happy%20Global%20Clients.svg",
