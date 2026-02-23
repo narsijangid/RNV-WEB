@@ -73,17 +73,21 @@ export default function ContactPage() {
     }, { scope: containerRef });
 
     return (
-        <main ref={containerRef} className="min-h-screen bg-white selection:bg-blue-100 selection:text-blue-900">
+        <main ref={containerRef} className="min-h-screen bg-transparent selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
+            {/* Background Glows for Premium Look */}
+            <div className="absolute top-0 left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 right-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
             {/* Banner Section */}
             <section className="relative pt-20 overflow-hidden">
-                <div className="relative w-full h-[500px] md:h-[600px] flex items-center bg-[#071626]">
+                <div className="relative w-full h-[500px] md:h-[600px] flex items-center bg-primary/5 dark:bg-transparent">
                     {/* Premium Slanted Shapes */}
                     <div className="absolute inset-0 z-0 overflow-hidden">
-                        <div className="absolute top-0 left-[35%] md:left-[45%] bottom-0 w-[200px] md:w-[350px] bg-blue-600/90 -skew-x-[25deg] transform origin-top translate-x-16 blur-[1px]"></div>
-                        <div className="absolute top-0 left-[30%] md:left-[40%] bottom-0 w-[200px] md:w-[350px] bg-blue-800/80 -skew-x-[25deg] transform origin-top blur-[1px]"></div>
-                        <div className="absolute top-0 left-0 bottom-0 w-[45%] md:w-[55%] bg-gradient-to-r from-[#0c1a2c] to-[#071626]"></div>
+                        <div className="absolute top-0 left-[35%] md:left-[45%] bottom-0 w-[200px] md:w-[350px] bg-primary/20 -skew-x-[25deg] transform origin-top translate-x-16 blur-[2px]"></div>
+                        <div className="absolute top-0 left-[30%] md:left-[40%] bottom-0 w-[200px] md:w-[350px] bg-primary/10 -skew-x-[25deg] transform origin-top blur-[2px]"></div>
+                        <div className="absolute top-0 left-0 bottom-0 w-[45%] md:w-[55%] bg-gradient-to-r from-background via-background/80 to-transparent dark:from-transparent"></div>
                         {/* Subtle patterns */}
-                        <div className="absolute top-0 right-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                        <div className="absolute top-0 right-0 w-full h-full opacity-[0.05] pointer-events-none bg-[radial-gradient(var(--foreground)_0.5px,transparent_0.5px)] [background-size:24px_24px]"></div>
                     </div>
 
                     <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between h-full py-12">
@@ -95,7 +99,7 @@ export default function ContactPage() {
                                 Together
                             </h1>
                             <div className="h-0.5 w-16 bg-blue-500 rounded-full"></div>
-                            <p className="text-gray-400 text-sm md:text-base max-w-md leading-relaxed font-medium">
+                            <p className="text-muted-foreground dark:text-gray-400 text-sm md:text-base max-w-md leading-relaxed font-medium">
                                 Whether you have a project idea, a partnership opportunity, or simply want to say hello, we're just a message away.
                             </p>
                             <div className="flex gap-4 pt-2">
@@ -129,37 +133,37 @@ export default function ContactPage() {
             </section>
 
             {/* Contact Form Section */}
-            <section id="contact-form" className="contact-section py-24 bg-gray-50/50">
+            <section id="contact-form" className="contact-section py-24 bg-muted/30 dark:bg-transparent">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-2xl mx-auto mb-20 space-y-3">
                         <span className="text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em]">Drop us a line</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Let Us Know What You Think</h2>
-                        <p className="text-gray-500 text-sm font-medium">Share your vision. We'll help you bring it to life with our expertise.</p>
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Let Us Know What You Think</h2>
+                        <p className="text-muted-foreground text-sm font-medium">Share your vision. We'll help you bring it to life with our expertise.</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-7xl mx-auto h-full">
                         {/* Form Column */}
-                        <div className="lg:col-span-8 bg-white rounded-3xl p-8 md:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gray-100">
+                        <div className="lg:col-span-8 bg-card rounded-3xl p-8 md:p-14 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-border">
                             <form className="space-y-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
-                                        <Label htmlFor="name" className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Full Name*</Label>
-                                        <Input id="name" placeholder="John Doe" className="bg-gray-50/30 border-gray-100 h-12 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all text-sm border-none shadow-sm" />
+                                        <Label htmlFor="name" className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">Full Name*</Label>
+                                        <Input id="name" placeholder="John Doe" className="bg-muted/30 border-border h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all text-sm border shadow-sm" />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="phone" className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Phone Number*</Label>
-                                        <Input id="phone" placeholder="+1 (555) 000-0000" className="bg-gray-50/30 border-gray-100 h-12 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all text-sm border-none shadow-sm" />
+                                        <Label htmlFor="phone" className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">Phone Number*</Label>
+                                        <Input id="phone" placeholder="+1 (555) 000-0000" className="bg-muted/30 border-border h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all text-sm border shadow-sm" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="email" className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Email Address*</Label>
-                                    <Input id="email" type="email" placeholder="john@company.com" className="bg-gray-50/30 border-gray-100 h-12 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all text-sm border-none shadow-sm" />
+                                    <Label htmlFor="email" className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">Email Address*</Label>
+                                    <Input id="email" type="email" placeholder="john@company.com" className="bg-muted/30 border-border h-12 rounded-xl focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all text-sm border shadow-sm" />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="message" className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Your Message</Label>
-                                    <Textarea id="message" placeholder="Tell us about your project or inquiry..." className="bg-gray-50/30 border-gray-100 min-h-[140px] rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all text-sm border-none shadow-sm resize-none" />
+                                    <Label htmlFor="message" className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">Your Message</Label>
+                                    <Textarea id="message" placeholder="Tell us about your project or inquiry..." className="bg-muted/30 border-border min-h-[140px] rounded-xl focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all text-sm border shadow-sm resize-none" />
                                 </div>
 
                                 {/* Services Selection */}
@@ -173,7 +177,7 @@ export default function ContactPage() {
                                                 onClick={() => toggleService(service)}
                                                 className={`px-5 py-2 rounded-xl text-[11px] font-bold transition-all duration-300 border ${selectedServices.includes(service)
                                                     ? "bg-blue-600 text-white border-blue-600 shadow-md scale-105"
-                                                    : "bg-white text-gray-500 border-gray-100 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50/30"
+                                                    : "bg-card text-muted-foreground border-border hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50/30"
                                                     }`}
                                             >
                                                 {service}
@@ -188,7 +192,7 @@ export default function ContactPage() {
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tight">Project brief / supporting docs</p>
                                         <span className="text-[9px] text-gray-400">PDF, JPG, PNG, DOCX</span>
                                     </div>
-                                    <div className="group border-2 border-dashed border-gray-100 bg-gray-50/20 rounded-2xl p-6 text-center cursor-pointer hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300">
+                                    <div className="group border-2 border-dashed border-border bg-slate-50/50 dark:bg-gray-50/20 rounded-2xl p-6 text-center cursor-pointer hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300">
                                         <div className="flex flex-center justify-center items-center gap-2.5 text-blue-600 font-bold text-xs">
                                             <Plus className="w-4 h-4 transition-transform group-hover:rotate-90" />
                                             <span>Attach Documents</span>
@@ -196,7 +200,7 @@ export default function ContactPage() {
                                     </div>
                                 </div>
 
-                                <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-12 py-7 rounded-2xl text-xs font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-200 hover:shadow-blue-300 transition-all hover:-translate-y-1">
+                                <Button className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-7 rounded-2xl text-xs font-black uppercase tracking-[0.2em] shadow-xl shadow-primary/20 hover:shadow-primary/40 dark:shadow-primary/10 dark:hover:shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95">
                                     Send Enquiry
                                 </Button>
                             </form>
@@ -247,7 +251,7 @@ export default function ContactPage() {
                                 </div>
 
                                 <div className="mt-auto pt-14 border-t border-white/5 relative z-10">
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6">Connected</h3>
+                                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-6">Connected</h3>
                                     <div className="flex flex-wrap gap-3">
                                         {[Linkedin, Github, Instagram, Twitter, Facebook, Globe].map((Icon, i) => (
                                             <Link key={i} href="#" className="p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all text-gray-400 group/social">

@@ -67,29 +67,29 @@ export default function TechStackSection() {
     }, { scope: containerRef });
 
     const TechCard = ({ item }: { item: typeof row1[0] }) => (
-        <div className="flex items-center gap-4 bg-white border border-slate-100 shadow-sm rounded-2xl px-8 py-5 min-w-[280px] hover:shadow-md transition-shadow duration-300">
+        <div className="flex items-center gap-4 bg-card border border-border shadow-sm rounded-2xl px-8 py-5 min-w-[280px] hover:shadow-md transition-shadow duration-300">
             <div className="w-10 h-10 flex items-center justify-center">
                 <img src={item.logo} alt={item.name} className="w-full h-full object-contain" />
             </div>
-            <span className="text-xl font-bold text-slate-700">{item.name}</span>
+            <span className="text-xl font-bold text-foreground">{item.name}</span>
         </div>
     );
 
     return (
         <section
             ref={containerRef}
-            className="py-24 bg-slate-50/50 overflow-hidden"
+            className="py-24 bg-muted/30 overflow-hidden"
             aria-labelledby="tech-stack-heading"
         >
             <div className="max-w-6xl mx-auto px-4 mb-16">
                 <div className="text-center space-y-4">
                     <h2
                         id="tech-stack-heading"
-                        className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight"
+                        className="text-4xl md:text-5xl font-bold text-foreground tracking-tight"
                     >
                         Technologies We Excel In
                     </h2>
-                    <p className="text-slate-600 max-w-3xl mx-auto text-lg leading-relaxed">
+                    <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
                         Our engineers work with the most reliable and in-demand technologies—empowering you with
                         scalable, secure, and modern solutions built for growth and adaptability.
                     </p>

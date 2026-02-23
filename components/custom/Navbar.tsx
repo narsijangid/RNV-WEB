@@ -6,8 +6,9 @@ import { ScrollTrigger } from "gsap/all";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "../ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -246,7 +247,7 @@ function Navbar() {
 
       <header
         ref={navRef}
-        className="bg-white/10 fixed inset-x-0 top-0 z-40 mx-auto w-full max-w-7xl rounded-b-xl px-5 backdrop-blur-2xl border border-white/20 shadow-lg"
+        className="fixed inset-x-0 top-0 z-40 mx-auto w-full max-w-7xl rounded-b-2xl px-5 backdrop-blur-xl border border-white/20 dark:border-white/5 bg-white/70 dark:bg-black/40 shadow-[0_8px_32px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300"
         role="banner"
         onMouseLeave={() => setOpenDropdown(null)}
       >
@@ -265,7 +266,7 @@ function Navbar() {
                 <img
                   src="https://www.rinovea.com/images/logo1.png"
                   alt="Rinovea Logo"
-                  className="h-16 w-auto object-contain"
+                  className="h-16 w-auto object-contain dark:brightness-150 dark:grayscale-0"
                   width="200"
                   height="64"
                 />
@@ -311,7 +312,7 @@ function Navbar() {
                     {hasSubLinks && openDropdown === link.name && (
                       <div
                         ref={(el) => { dropdownRefs.current[link.name] = el }}
-                        className={`absolute top-full mt-1.5 rounded-xl border border-border bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] ${link.isMega ? "left-1/2 -translate-x-1/2 w-[700px]" : "left-0 w-64"}`}
+                        className={`absolute top-full mt-1.5 rounded-xl border border-border bg-background p-5 shadow-[0_20px_50px_rgba(0,0,0,0.1)] ${link.isMega ? "left-1/2 -translate-x-1/2 w-[700px]" : "left-0 w-64"}`}
                         role="menu"
                       >
                         {link.isMega ? (
@@ -320,7 +321,7 @@ function Navbar() {
                             <div className="space-y-8">
                               {link.categories?.slice(0, 1).map((cat) => (
                                 <div key={cat.title} className="space-y-3">
-                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <h4 className="px-1 text-[13px] font-bold text-foreground">{cat.title}</h4>
                                   <div className="space-y-0.5">
                                     {cat.links?.map((sub) => (
                                       <Link
@@ -339,7 +340,7 @@ function Navbar() {
                               ))}
                               {link.categories?.slice(3, 4).map((cat) => (
                                 <div key={cat.title} className="space-y-3">
-                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <h4 className="px-1 text-[13px] font-bold text-foreground">{cat.title}</h4>
                                   <div className="space-y-0.5">
                                     {cat.links?.map((sub) => (
                                       <Link
@@ -362,7 +363,7 @@ function Navbar() {
                             <div className="space-y-8">
                               {link.categories?.slice(1, 2).map((cat) => (
                                 <div key={cat.title} className="space-y-3">
-                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <h4 className="px-1 text-[13px] font-bold text-foreground">{cat.title}</h4>
                                   <div className="space-y-0.5">
                                     {cat.links?.map((sub) => (
                                       <Link
@@ -381,7 +382,7 @@ function Navbar() {
                               ))}
                               {link.categories?.slice(4, 5).map((cat) => (
                                 <div key={cat.title} className="space-y-3">
-                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <h4 className="px-1 text-[13px] font-bold text-foreground">{cat.title}</h4>
                                   <div className="space-y-0.5">
                                     {cat.links?.map((sub) => (
                                       <Link
@@ -404,7 +405,7 @@ function Navbar() {
                             <div className="space-y-8">
                               {link.categories?.slice(2, 3).map((cat) => (
                                 <div key={cat.title} className="space-y-3">
-                                  <h4 className="px-1 text-[13px] font-bold text-black">{cat.title}</h4>
+                                  <h4 className="px-1 text-[13px] font-bold text-foreground">{cat.title}</h4>
                                   <div className="space-y-0.5">
                                     {cat.links?.map((sub) => (
                                       <Link
@@ -446,6 +447,7 @@ function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3">
+              <ThemeToggle />
               <Link href="/contact#contact-form">
                 <Button
                   size={"sm"}

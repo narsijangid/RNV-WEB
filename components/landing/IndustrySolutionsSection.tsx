@@ -85,10 +85,10 @@ export function IndustrySolutionsSection() {
         <section className="py-20 px-4 bg-transparent overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
                         Industries <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-700">We Serve</span>
                     </h2>
-                    <p className="text-slate-600 max-w-3xl mx-auto text-base md:text-lg font-medium leading-relaxed">
+                    <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg font-medium leading-relaxed">
                         Driving global innovation across Finance, Healthcare, EdTech, and SaaS with <br className="hidden md:block" />
                         next-generation technology solutions engineered for scale and impact.
                     </p>
@@ -217,7 +217,7 @@ function SolutionCard({ solution }: { solution: typeof solutions[0] }) {
 
             <div
                 ref={labelRef}
-                className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-fit min-w-[180px] px-8 h-[54px] bg-white/20 backdrop-blur-md backdrop-brightness-110 border border-white/20 rounded-2xl shadow-xl flex items-center justify-center z-10 whitespace-nowrap"
+                className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 w-fit min-w-[180px] px-8 h-[54px] bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl flex items-center justify-center z-10 whitespace-nowrap"
             >
                 <span className="text-orange-500 font-extrabold tracking-tight text-lg uppercase">
                     {solution.name}
@@ -226,9 +226,9 @@ function SolutionCard({ solution }: { solution: typeof solutions[0] }) {
 
             <div
                 ref={infoCardRef}
-                className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[110%] w-[120%] min-h-[140px] bg-white/20 backdrop-blur-md backdrop-brightness-125 backdrop-saturate-150 border border-white/10 rounded-[32px] p-6 shadow-2xl opacity-0 scale-[0.98] flex items-center justify-center text-center z-[5] pointer-events-none"
+                className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[110%] w-[120%] min-h-[140px] bg-white/80 dark:bg-black/60 backdrop-blur-lg border border-border/50 rounded-[32px] p-6 shadow-2xl opacity-0 scale-[0.98] flex items-center justify-center text-center z-[5] pointer-events-none"
             >
-                <p className="text-slate-900 text-[13px] md:text-sm font-medium leading-relaxed">
+                <p className="text-foreground text-[13px] md:text-sm font-medium leading-relaxed">
                     {displayText}
                 </p>
             </div>

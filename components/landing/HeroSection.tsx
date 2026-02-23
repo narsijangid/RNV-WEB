@@ -51,10 +51,14 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="item-center flex flex-col flex-nowrap p-5">
+    <div className="item-center flex flex-col flex-nowrap p-5 relative overflow-hidden">
+      {/* Premium Hero Glows */}
+      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] pointer-events-none hidden dark:block"></div>
+      <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none hidden dark:block"></div>
+
       <div
         ref={heroRef}
-        className="hero space-y-4 pt-[116px] pb-[48px] md:pt-[128px] md:pb-[128px] md:text-center lg:pt-[140px] lg:pb-[96px]"
+        className="hero relative z-10 space-y-4 pt-[116px] pb-[48px] md:pt-[128px] md:pb-[128px] md:text-center lg:pt-[140px] lg:pb-[96px]"
       >
         <SectionHeading
           badge="AI Strategy & Development"

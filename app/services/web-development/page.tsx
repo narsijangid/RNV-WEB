@@ -32,9 +32,9 @@ import Link from "next/link";
 
 export default function WebDevelopmentPage() {
     return (
-        <main className="min-h-screen bg-white pt-20">
+        <main className="min-h-screen bg-transparent pt-20">
             {/* 1. Hero Section */}
-            <section className="relative overflow-hidden bg-[#0a1e3b] text-white py-16 md:py-24">
+            <section className="relative overflow-hidden bg-slate-50 dark:bg-transparent text-foreground dark:text-white py-16 md:py-24">
                 {/* Abstract Background Elements */}
                 <div className="absolute top-0 right-0 w-1/2 h-full skew-x-[-20deg] bg-blue-600/10 transform translate-x-1/4"></div>
                 <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-500/5 blur-3xl"></div>
@@ -46,7 +46,7 @@ export default function WebDevelopmentPage() {
                             WEB DEVELOPMENT <br />
                             <span className="text-blue-500">COMPANY</span>
                         </h1>
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl">
+                        <p className="text-base md:text-lg text-muted-foreground dark:text-gray-300 leading-relaxed max-w-xl">
                             Concept to launch, we build fast, scalable and high performing web based solutions that resonate with your business objectives. As a leading web development company, we bring you futuristic websites and web platforms for ultimate growth.
                         </p>
                         <div className="flex flex-wrap gap-4 pt-2">
@@ -73,26 +73,26 @@ export default function WebDevelopmentPage() {
             </section>
 
             {/* 2. Our Web Development Capabilities Section */}
-            <section className="py-24 bg-gray-50/50">
+            <section className="py-24 bg-muted/30 dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
+                        <h2 className="text-2xl md:text-4xl font-bold text-foreground">
                             Our Web Development <span className="text-blue-600">Capabilities</span>
                         </h2>
                         <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-                        <p className="text-gray-600 max-w-4xl mx-auto text-base pt-4 leading-relaxed">
+                        <p className="text-muted-foreground max-w-4xl mx-auto text-base pt-4 leading-relaxed">
                             Our web development capabilities span the full range from slick front end display to extensible back-end solutions. We focus on full-stack engineering, transforming digital products, and creating resilient solutions that future proof your organization.
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {capabilities.slice(0, 3).map((cap, idx) => (
-                            <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                                <div className="mb-5 inline-block p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <div key={idx} className="bg-card p-6 rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 group">
+                                <div className="mb-5 inline-block p-3 bg-blue-500/10 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                                     {cap.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{cap.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-sm">
+                                <h3 className="text-xl font-bold text-foreground mb-3">{cap.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed text-sm">
                                     {cap.desc}
                                 </p>
                             </div>
@@ -100,12 +100,12 @@ export default function WebDevelopmentPage() {
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
                         {capabilities.slice(3).map((cap, idx) => (
-                            <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                                <div className="mb-5 inline-block p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <div key={idx} className="bg-card p-6 rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 group">
+                                <div className="mb-5 inline-block p-3 bg-blue-500/10 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                                     {cap.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{cap.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-sm">
+                                <h3 className="text-xl font-bold text-foreground mb-3">{cap.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed text-sm">
                                     {cap.desc}
                                 </p>
                             </div>
@@ -115,25 +115,25 @@ export default function WebDevelopmentPage() {
             </section>
 
             {/* 3. Our Web Development Services Section */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-background dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                        <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                             Our Web Development <span className="text-blue-600">Services</span>
                         </h2>
-                        <p className="text-gray-600 max-w-4xl mx-auto mt-4 text-base leading-relaxed">
+                        <p className="text-muted-foreground max-w-4xl mx-auto mt-4 text-base leading-relaxed">
                             We build modern web development software solutions that combine beautiful frontends with powerful backends. Whether it's a landing page, a mobile app, or an enterprise platform, we deliver lightning fast, secure, scalable solutions that drive real world business success every time.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-gray-100 overflow-hidden rounded-2xl">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-border overflow-hidden rounded-2xl">
                         {services.map((service, idx) => (
-                            <div key={idx} className="p-8 border-r border-b border-gray-100 hover:bg-gray-50/50 transition-colors group">
-                                <div className={`mb-5 inline-block p-3.5 rounded-xl ${service.bgColor} ${service.iconColor} transition-transform duration-300 group-hover:scale-110`}>
+                            <div key={idx} className="p-8 border-r border-b border-border hover:bg-muted/30 transition-colors group">
+                                <div className={`mb-5 inline-block p-3.5 rounded-xl ${service.bgColor.replace('-50', '-500/10')} ${service.iconColor} transition-transform duration-300 group-hover:scale-110`}>
                                     {service.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{service.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-[13px]">
+                                <h3 className="text-lg font-bold text-foreground group-hover:text-blue-600 transition-colors mb-3">{service.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed text-[13px]">
                                     {service.desc}
                                 </p>
                             </div>
@@ -143,22 +143,22 @@ export default function WebDevelopmentPage() {
             </section>
 
             {/* 4. Why Choose Rinovea Section */}
-            <section className="py-24 bg-[#f8fbff]">
+            <section className="py-24 bg-muted/20 dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-2xl md:text-4xl font-bold text-[#0a1e3b]">
+                        <h2 className="text-2xl md:text-4xl font-bold text-foreground">
                             Why Choose <span className="text-blue-600">Rinovea</span> for Website Development Services?
                         </h2>
-                        <p className="text-gray-500 max-w-5xl mx-auto text-sm md:text-base leading-relaxed">
+                        <p className="text-muted-foreground max-w-5xl mx-auto text-sm md:text-base leading-relaxed">
                             We're more than just code monkeys, we create conversion focused, future ready digital experiences. With knowledge in current technologies and frameworks, scrum methodology, and human centric design, Rinovea prides in providing scalable web solutions that cater to startups, small growing businesses and enterprises globally.
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                         {whyChooseData.map((item, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 hover:border-blue-100">
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                                <p className="text-gray-500 text-sm leading-relaxed">
+                            <div key={idx} className="bg-card p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-border hover:border-blue-500/30">
+                                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
                                     {item.desc}
                                 </p>
                             </div>
@@ -168,16 +168,16 @@ export default function WebDevelopmentPage() {
             </section>
 
             {/* 5. Build Your Web Vision Banner */}
-            <section className="py-12 bg-white">
+            <section className="py-12 bg-background dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="bg-[#0a1b2e] rounded-2xl p-10 md:p-16 text-center text-white relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 via-transparent to-transparent"></div>
+                    <div className="bg-primary-foreground/5 dark:bg-primary-foreground/10 border border-primary/20 rounded-2xl p-10 md:p-16 text-center text-foreground relative overflow-hidden group hover:border-primary/40 transition-all duration-500">
+                        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 via-transparent to-transparent group-hover:opacity-30 transition-opacity"></div>
                         <div className="relative z-10 max-w-4xl mx-auto space-y-6">
                             <h2 className="text-3xl md:text-4xl font-bold italic">Let's Build Your Web Vision Together</h2>
-                            <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                                 Have a web app idea or want to scale your digital presence? Our web development experts are here to transform your concept into a high-performing reality, with full-stack expertise and future-ready frameworks.
                             </p>
-                            <button className="px-8 py-3 bg-[#0070f3] hover:bg-blue-600 text-white font-bold rounded-lg transition-colors shadow-lg shadow-blue-500/20">
+                            <button className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1">
                                 Contact Our Experts
                             </button>
                         </div>
@@ -189,20 +189,20 @@ export default function WebDevelopmentPage() {
             <TechStackSection />
 
             {/* 7. Development Process Section */}
-            <section className="py-24 bg-[#f8fbff]">
+            <section className="py-24 bg-muted/30 dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex flex-col lg:flex-row gap-12">
                         {/* Process Sidebar */}
                         <div className="lg:w-1/3">
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#0a1e3b] mb-4">Our Web Development <br /><span className="text-blue-600">Process</span></h2>
-                            <p className="text-gray-500 text-sm mb-12">Scalable, flexibly architected future ready web sites, portals and web applications.</p>
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Web Development <br /><span className="text-blue-600">Process</span></h2>
+                            <p className="text-muted-foreground text-sm mb-12">Scalable, flexibly architected future ready web sites, portals and web applications.</p>
 
-                            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl inline-block mb-6">
+                            <div className="bg-card p-8 rounded-2xl shadow-sm border border-border">
+                                <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl inline-block mb-6">
                                     <Send className="w-5 h-5 -rotate-45" />
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Websites That Work <br />Beyond Aesthetics</h3>
-                                <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                                <h3 className="text-xl font-bold text-foreground mb-4">Websites That Work <br />Beyond Aesthetics</h3>
+                                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                                     From corporate websites to intricate digital platforms, we develop speedy, safe, and SEO-friendly website solutions.
                                 </p>
                                 <ul className="space-y-4">
@@ -212,13 +212,13 @@ export default function WebDevelopmentPage() {
                                         "Modern technology stacks such as React, Vue, Node.js and Python",
                                         "Continuous maintenance, analytics and usage and conversion"
                                     ].map((point, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-sm text-gray-600 font-medium">
+                                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/80 font-medium">
                                             <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 flex-shrink-0"></div>
                                             {point}
                                         </li>
                                     ))}
                                 </ul>
-                                <button className="mt-10 px-6 py-3 bg-[#0a66c2] text-white rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-lg">
+                                <button className="mt-10 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg hover:-translate-y-1">
                                     Let's Build Together
                                 </button>
                             </div>
@@ -227,13 +227,13 @@ export default function WebDevelopmentPage() {
                         {/* Process Steps */}
                         <div className="lg:w-2/3 space-y-6">
                             {processSteps.map((step, idx) => (
-                                <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex gap-8 items-start group hover:border-blue-200 transition-colors">
-                                    <div className="text-5xl md:text-7xl font-bold text-[#e1efff] group-hover:text-[#cce4ff] transition-colors leading-none">
+                                <div key={idx} className="bg-card p-8 rounded-2xl shadow-sm border border-border flex gap-8 items-start group hover:border-blue-500/30 transition-all hover:shadow-md">
+                                    <div className="text-5xl md:text-7xl font-bold text-muted/30 group-hover:text-blue-500/20 transition-colors leading-none">
                                         {idx + 1}
                                     </div>
                                     <div className="space-y-3">
-                                        <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
-                                        <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                                        <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
+                                        <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                                             {step.desc}
                                         </p>
                                     </div>
@@ -245,7 +245,7 @@ export default function WebDevelopmentPage() {
             </section>
 
             {/* Final Call to Action */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-background dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-5xl text-center">
                     <div className="bg-gradient-to-br from-blue-700 to-blue-900 rounded-[2.5rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
@@ -363,25 +363,25 @@ function TechStackSection() {
     const tabs = Object.keys(techStack);
 
     return (
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-background dark:bg-transparent">
             <div className="container mx-auto px-6 max-w-7xl text-center">
-                <h2 className="text-3xl md:text-5xl font-bold text-[#0a1e3b] mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
                     Technology Stack That Powers <br />Exceptional Development
                 </h2>
-                <p className="text-gray-500 max-w-4xl mx-auto mb-16 text-sm md:text-base">
+                <p className="text-muted-foreground max-w-4xl mx-auto mb-16 text-sm md:text-base">
                     Explore the frameworks, tools, and platforms our experts use to build secure, scalable, and high-performance solutions tailored to every project need.
                 </p>
 
                 {/* Tabs Container */}
                 <div className="relative mb-12 flex justify-center">
-                    <div className="flex items-center space-x-2 bg-white border border-gray-100 p-1.5 rounded-full shadow-sm overflow-x-auto no-scrollbar">
+                    <div className="flex items-center space-x-2 bg-card border border-border p-1.5 rounded-full shadow-sm overflow-x-auto no-scrollbar">
                         {tabs.map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 whitespace-nowrap ${activeTab === tab
-                                    ? "bg-[#0070f3] text-white shadow-md shadow-blue-200"
-                                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
+                                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                     }`}
                             >
                                 {tab}
@@ -393,13 +393,13 @@ function TechStackSection() {
                 {/* Content Area */}
                 <div className="grid md:grid-cols-3 gap-8">
                     {Object.entries(techStack[activeTab as keyof typeof techStack]).map(([category, items]) => (
-                        <div key={category} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-left hover:shadow-md transition-shadow">
-                            <h4 className="text-lg font-bold text-gray-900 mb-6 border-b border-gray-50 pb-4">{category}</h4>
+                        <div key={category} className="bg-card p-8 rounded-2xl border border-border shadow-sm text-left hover:shadow-md transition-shadow">
+                            <h4 className="text-lg font-bold text-foreground mb-6 border-b border-border pb-4">{category}</h4>
                             <div className="flex flex-wrap gap-3">
                                 {items.map((item) => (
                                     <span
                                         key={item}
-                                        className="px-4 py-2 bg-gray-50 text-gray-600 text-[13px] font-medium rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                                        className="px-4 py-2 bg-muted/50 text-muted-foreground text-[13px] font-medium rounded-lg border border-border hover:border-blue-500/30 hover:bg-blue-500/10 transition-colors"
                                     >
                                         {item}
                                     </span>

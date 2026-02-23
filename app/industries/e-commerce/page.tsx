@@ -23,9 +23,9 @@ import Link from "next/link";
 
 export default function EcommercePage() {
     return (
-        <main className="min-h-screen bg-white pt-20">
+        <main className="min-h-screen bg-transparent pt-20">
             {/* 1. Hero Section */}
-            <section className="relative overflow-hidden bg-[#051124] text-white py-12 md:py-16">
+            <section className="relative overflow-hidden bg-primary/5 dark:bg-transparent text-foreground dark:text-white py-12 md:py-16">
                 {/* Abstract Background Elements */}
                 <div className="absolute top-0 right-0 w-1/2 h-full skew-x-[-20deg] bg-gradient-to-r from-orange-600/10 to-orange-400/5 transform translate-x-1/4"></div>
                 <div className="absolute bottom-0 left-0 w-1/3 h-1/2 skew-y-[10deg] bg-orange-500/5 blur-3xl"></div>
@@ -37,7 +37,7 @@ export default function EcommercePage() {
                             ECOMMERCE SOFTWARE <br />
                             <span className="text-orange-500 text-2xl md:text-4xl">DEVELOPMENT COMPANY</span>
                         </h1>
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl">
+                        <p className="text-base md:text-lg text-muted-foreground dark:text-gray-300 leading-relaxed max-w-xl">
                             From custom storefronts to scalable mobile commerce platforms, Rinovea empowers your retail business with world-class eCommerce software development.
                         </p>
                         <div className="flex flex-wrap gap-4 pt-2">
@@ -64,14 +64,14 @@ export default function EcommercePage() {
             </section>
 
             {/* 2. E-Commerce App Development Solutions Section */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-muted/30 dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 uppercase">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground uppercase">
                             E-Commerce App Development Solutions <span className="text-orange-600">Tailored for Growth and Conversion</span>
                         </h2>
                         <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
-                        <p className="text-gray-600 max-w-3xl mx-auto text-lg pt-4">
+                        <p className="text-muted-foreground max-w-3xl mx-auto text-lg pt-4">
                             <span className="font-bold text-orange-600">Rinovea</span> develops flexible, conversion-focused eCommerce platforms tailored for D2C, B2B, and marketplace models. From storefront UX to backend automation, we build systems that grow with your business.
                         </p>
                     </div>
@@ -80,14 +80,14 @@ export default function EcommercePage() {
                 </div>
             </section>
 
-            {/* 4. Why Top Retailers Rely on Section */}
-            <section className="py-24 bg-[#fff7ed] border-t border-orange-100">
+            {/* 3. Why Top Retailers Rely on Section */}
+            <section className="py-24 bg-muted/20 dark:bg-transparent border-t border-border">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-20">
-                        <h2 className="text-3xl md:text-5xl font-extrabold text-[#0a1e3b] tracking-tight">
+                        <h2 className="text-3xl md:text-5xl font-extrabold text-foreground tracking-tight">
                             Why Top Retailers Rely on <span className="text-orange-600">Rinovea</span> for E-Commerce Excellence?
                         </h2>
-                        <p className="text-gray-500 max-w-3xl mx-auto mt-6 text-lg">
+                        <p className="text-muted-foreground max-w-3xl mx-auto mt-6 text-lg">
                             We build secure, conversion-focused <span className="text-orange-600 font-bold underline decoration-2 underline-offset-4">eCommerce</span> platforms with fast rollouts, omnichannel integration, and scalable code for D2C, B2C, and B2B brands.
                         </p>
                     </div>
@@ -95,32 +95,32 @@ export default function EcommercePage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
                         {[
                             {
-                                icon: <Monitor className="w-10 h-10 p-2 bg-cyan-50 text-cyan-500 rounded-lg" />,
+                                icon: <Monitor className="w-10 h-10 p-2 bg-cyan-500/10 text-cyan-500 rounded-lg" />,
                                 title: "Retail-Focused Development",
                                 desc: "We understand the nuances of B2B, B2C, and D2C online selling."
                             },
                             {
-                                icon: <Zap className="w-10 h-10 p-2 bg-orange-50 text-orange-500 rounded-lg" />,
+                                icon: <Zap className="w-10 h-10 p-2 bg-orange-500/10 text-orange-500 rounded-lg" />,
                                 title: "Quick Go-to-Market",
                                 desc: "Our agile teams help launch custom storefronts and platforms faster."
                             },
                             {
-                                icon: <Target className="w-10 h-10 p-2 bg-purple-50 text-purple-500 rounded-lg" />,
+                                icon: <Target className="w-10 h-10 p-2 bg-purple-500/10 text-purple-500 rounded-lg" />,
                                 title: "Conversion-Centric Design",
                                 desc: "From checkout to product discovery, we focus on driving more purchases."
                             },
                             {
-                                icon: <RefreshCw className="w-10 h-10 p-2 bg-green-50 text-green-500 rounded-lg" />,
+                                icon: <RefreshCw className="w-10 h-10 p-2 bg-green-500/10 text-green-500 rounded-lg" />,
                                 title: "Omnichannel Integration",
                                 desc: "Connect your e-commerce with mobile apps, POS, CRMs, and warehouses."
                             },
                             {
-                                icon: <Layers className="w-10 h-10 p-2 bg-indigo-50 text-indigo-500 rounded-lg" />,
+                                icon: <Layers className="w-10 h-10 p-2 bg-indigo-500/10 text-indigo-500 rounded-lg" />,
                                 title: "Scalable Engagement Options",
                                 desc: "Choose the model that fits — MVP, module-based, or full-suite delivery."
                             },
                             {
-                                icon: <ShieldCheck className="w-10 h-10 p-2 bg-orange-50 text-orange-500 rounded-lg" />,
+                                icon: <ShieldCheck className="w-10 h-10 p-2 bg-orange-500/10 text-orange-500 rounded-lg" />,
                                 title: "Secure, Stable Codebase",
                                 desc: "All our solutions meet modern e-commerce security and compliance standards."
                             }
@@ -129,8 +129,8 @@ export default function EcommercePage() {
                                 <div className="mb-4 transform transition-transform hover:scale-110">
                                     {reason.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900">{reason.title}</h3>
-                                <p className="text-gray-500 text-base leading-relaxed">
+                                <h3 className="text-xl font-bold text-foreground">{reason.title}</h3>
+                                <p className="text-muted-foreground text-base leading-relaxed">
                                     {reason.desc}
                                 </p>
                             </div>
@@ -140,7 +140,7 @@ export default function EcommercePage() {
             </section>
 
             {/* Final Call to Action */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-background dark:bg-transparent">
                 <div className="container mx-auto px-6 max-w-5xl text-center">
                     <div className="bg-gradient-to-br from-orange-600 to-orange-800 rounded-[3rem] p-12 md:p-20 text-white shadow-2xl relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
@@ -188,17 +188,17 @@ function SolutionsAccordion() {
             {solutions.map((solution, idx) => (
                 <div
                     key={idx}
-                    className={`group bg-white rounded-xl border transition-all duration-300 overflow-hidden ${openIndex === idx ? "border-orange-500 shadow-md ring-1 ring-orange-100" : "border-gray-200 hover:border-orange-300"
+                    className={`group bg-card rounded-xl border transition-all duration-300 overflow-hidden ${openIndex === idx ? "border-orange-500 shadow-md ring-1 ring-orange-500/20" : "border-border hover:border-orange-500/50"
                         }`}
                 >
                     <button
                         onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                         className="w-full p-6 flex items-center justify-between text-left focus:outline-none"
                     >
-                        <h3 className={`text-lg font-bold transition-colors ${openIndex === idx ? "text-orange-600" : "text-gray-800"}`}>
+                        <h3 className={`text-lg font-bold transition-colors ${openIndex === idx ? "text-orange-500" : "text-foreground"}`}>
                             {solution.title}
                         </h3>
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${openIndex === idx ? "text-orange-600 rotate-180" : "text-gray-400"
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${openIndex === idx ? "text-orange-500 rotate-180" : "text-muted-foreground"
                             }`} />
                     </button>
 
@@ -206,7 +206,7 @@ function SolutionsAccordion() {
                         className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openIndex === idx ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"
                             }`}
                     >
-                        <p className="text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                        <p className="text-muted-foreground text-sm leading-relaxed border-t border-border pt-4">
                             {solution.desc}
                         </p>
                     </div>

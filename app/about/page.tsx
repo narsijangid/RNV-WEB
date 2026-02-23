@@ -80,7 +80,7 @@ const AboutPage = () => {
         }}
       />
 
-      <main id="main-content" role="main">
+      <main id="main-content" role="main" className="bg-transparent text-foreground">
         <section className="py-32 mx-auto max-w-6xl px-5" aria-labelledby="about-heading">
           <div className="container">
             <div className="flex flex-col items-center justify-start gap-6 lg:flex-row">
@@ -187,29 +187,29 @@ const AboutPage = () => {
 
             <section ref={statsSectionRef} className="container flex flex-col gap-16 mt-24" aria-labelledby="stats-heading">
               <header>
-                <h2 id="stats-heading" className="max-w-3xl text-4xl font-medium md:text-5xl">
+                <h2 id="stats-heading" className="max-w-3xl text-4xl font-medium md:text-5xl text-foreground">
                   We excel in our field, but skill isn't everything we offer.
                 </h2>
               </header>
               <div ref={statsGridRef} className="grid grid-cols-2 gap-6 md:grid-cols-3" role="region" aria-label="Company statistics and achievements">
-                <div className="flex flex-col gap-6 border-b pb-8" role="article" aria-labelledby="stat-1">
-                  <p id="stat-1" className="text-4xl font-medium md:text-5xl" aria-label="21 million">21M</p>
+                <div className="flex flex-col gap-6 border-b border-border pb-8" role="article" aria-labelledby="stat-1">
+                  <p id="stat-1" className="text-4xl font-medium md:text-5xl text-foreground" aria-label="21 million">21M</p>
                   <p className="text-muted-foreground">Global Reach of Users</p>
                 </div>
-                <div className="flex flex-col gap-6 border-b pb-8" role="article" aria-labelledby="stat-2">
-                  <p id="stat-2" className="text-4xl font-medium md:text-5xl" aria-label="8 plus years">8+</p>
+                <div className="flex flex-col gap-6 border-b border-border pb-8" role="article" aria-labelledby="stat-2">
+                  <p id="stat-2" className="text-4xl font-medium md:text-5xl text-foreground" aria-label="8 plus years">8+</p>
                   <p className="text-muted-foreground">Years of Expertise</p>
                 </div>
-                <div className="flex flex-col gap-6 border-b pb-8" role="article" aria-labelledby="stat-3">
-                  <p id="stat-3" className="text-4xl font-medium md:text-5xl" aria-label="54 projects">54</p>
+                <div className="flex flex-col gap-6 border-b border-border pb-8" role="article" aria-labelledby="stat-3">
+                  <p id="stat-3" className="text-4xl font-medium md:text-5xl text-foreground" aria-label="54 projects">54</p>
                   <p className="text-muted-foreground">Projects Completed</p>
                 </div>
-                <div className="flex flex-col gap-6 border-b pb-8" role="article" aria-labelledby="stat-4">
-                  <p id="stat-4" className="text-4xl font-medium md:text-5xl" aria-label="113 thousand plus">113k+</p>
+                <div className="flex flex-col gap-6 border-b border-border pb-8" role="article" aria-labelledby="stat-4">
+                  <p id="stat-4" className="text-4xl font-medium md:text-5xl text-foreground" aria-label="113 thousand plus">113k+</p>
                   <p className="text-muted-foreground">Monthly Active Users</p>
                 </div>
-                <div className="flex flex-col gap-6 border-b pb-8" role="article" aria-labelledby="stat-5">
-                  <p id="stat-5" className="text-4xl font-medium md:text-5xl" aria-label="461 thousand">461k</p>
+                <div className="flex flex-col gap-6 border-b border-border pb-8" role="article" aria-labelledby="stat-5">
+                  <p id="stat-5" className="text-4xl font-medium md:text-5xl text-foreground" aria-label="461 thousand">461k</p>
                   <p className="text-muted-foreground">Registered Accounts</p>
                 </div>
               </div>

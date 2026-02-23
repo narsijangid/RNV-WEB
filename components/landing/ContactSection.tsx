@@ -183,7 +183,7 @@ function ContactUs() {
                     id="name"
                     type="text"
                     placeholder="Enter your name"
-                    className="focus:border-primary focus:ring-primary w-full border-gray-200 h-10 sm:h-11"
+                    className="focus:border-primary focus:ring-primary w-full border-border h-10 sm:h-11"
                     name="name"
                     autoComplete="name"
                     required
@@ -203,7 +203,7 @@ function ContactUs() {
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="focus:border-primary focus:ring-primary w-full border-gray-200 h-10 sm:h-11"
+                    className="focus:border-primary focus:ring-primary w-full border-border h-10 sm:h-11"
                     name="email"
                     autoComplete="email"
                     inputMode="email"
@@ -224,7 +224,7 @@ function ContactUs() {
                     id="message"
                     placeholder="Type your message..."
                     rows={4}
-                    className="focus:border-primary focus:ring-primary min-h-32 sm:min-h-40 w-full resize-none border-gray-200"
+                    className="focus:border-primary focus:ring-primary min-h-32 sm:min-h-40 w-full resize-none border-border"
                     name="message"
                     required
                     aria-required="true"

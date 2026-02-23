@@ -19,7 +19,7 @@ function Footer() {
   ];
 
   return (
-    <div className="mt-10 bg-[linear-gradient(to_bottom,_white_0%,_white_20%,_rgb(29_39_54/0.8)_22%,_black_100%)]">
+    <div className="mt-10 bg-[linear-gradient(to_bottom,oklch(0.9816_0.0017_247.839)_0%,oklch(0.9816_0.0017_247.839)_20%,rgba(29,39,54,0.8)_22%,black_100%)] dark:bg-[linear-gradient(to_bottom,var(--background)_0%,var(--background)_20%,rgba(29,39,54,0.8)_22%,black_100%)]">
       <div
         className="relative w-full bg-transparent"
         role="img"
@@ -39,7 +39,7 @@ function Footer() {
             {["R", "I", "N", "O", "V", "E", "A"].map((char, idx) => (
               <span
                 key={`rinovea-outline-${idx}`}
-                className={`${idx === 0 ? "text-orange-500" : "text-primary-foreground/80"} footer-slang font-extrabold uppercase`}
+                className={`${idx === 0 ? "text-orange-500" : "text-white"} footer-slang font-extrabold uppercase`}
               >
                 {char}
               </span>

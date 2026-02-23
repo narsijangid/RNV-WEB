@@ -1,5 +1,6 @@
 import Footer from "@/components/custom/Footer";
 import Navbar from "@/components/custom/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
 import "@/lib/GSAPAnimations";
 import { defaultMetadata } from "@/lib/metadata";
@@ -25,13 +26,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="min-h-screen w-full">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen w-full">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
         <Script
           src="https://cdn.jotfor.ms/agent/embedjs/019c80086156706ea95ee4092bcb885e252b/embed.js"
           strategy="afterInteractive"

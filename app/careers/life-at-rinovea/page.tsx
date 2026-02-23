@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function LifeAtRinovea() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-transparent">
             {/* Banner Section */}
             <section className="relative pt-20 flex flex-col items-center">
                 <div className="relative w-full overflow-hidden rounded-t-[50px]">
@@ -15,27 +15,27 @@ export default function LifeAtRinovea() {
                     />
 
                     {/* Bottom Blur Effect */}
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-white/20 backdrop-blur-xl [mask-image:linear-gradient(to_top,black,transparent)]"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-background/20 backdrop-blur-xl [mask-image:linear-gradient(to_top,black,transparent)]"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
                 </div>
 
                 <div className="container mx-auto px-4 py-8 text-center">
-                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
                         Life at <span className="text-blue-600">Rinovea</span>
                     </h1>
-                    <p className="text-sm md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         At Rinovea, we don't just build technology; we build futures. Join a team where your ideas matter and your growth is our priority.
                     </p>
                 </div>
             </section>
 
             {/* Why Work With Rinovea Section */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-background dark:bg-transparent">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row items-start justify-between gap-12 max-w-6xl mx-auto">
                         {/* Left Side: Heading */}
                         <div className="md:w-1/2">
-                            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.1]">
+                            <h2 className="text-5xl md:text-6xl font-bold text-foreground leading-[1.1]">
                                 Why Work <br />
                                 With <span className="text-blue-500">Rinovea?</span>
                             </h2>
@@ -43,10 +43,10 @@ export default function LifeAtRinovea() {
 
                         {/* Right Side: Content */}
                         <div className="md:w-1/2 space-y-8">
-                            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                                 Rinovea is a place where you'll work with others who share the same passion and dedication, where a dynamic working environment and healthy respect encourage you to give your best shot every time we do it together.
                             </p>
-                            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                                 If you really want to understand how you can make a difference in the digital world and be super creative, then Rinovea is the perfect place for you.
                             </p>
                         </div>
@@ -55,7 +55,7 @@ export default function LifeAtRinovea() {
             </section>
 
             {/* Values Section */}
-            <section className="py-10 bg-[#14212b]">
+            <section className="py-10 bg-muted/50 dark:bg-transparent">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                         {[
@@ -101,10 +101,10 @@ export default function LifeAtRinovea() {
                         ].map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-xl p-5 flex flex-col items-center justify-center gap-4 shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all hover:scale-105"
+                                className="bg-card rounded-xl p-5 flex flex-col items-center justify-center gap-4 shadow-[0_0_20px_rgba(59,130,246,0.2)] border border-border transition-all hover:scale-105"
                             >
                                 {item.icon}
-                                <span className="text-gray-900 font-bold text-base whitespace-nowrap">{item.label}</span>
+                                <span className="text-foreground font-bold text-base whitespace-nowrap">{item.label}</span>
                             </div>
                         ))}
                     </div>
@@ -112,7 +112,7 @@ export default function LifeAtRinovea() {
             </section>
 
             {/* Management Quote Section */}
-            <section className="py-24 bg-white overflow-hidden">
+            <section className="py-24 bg-background dark:bg-transparent overflow-hidden">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-16 max-w-7xl mx-auto">
                         {/* Left Side: Quote & Text */}
@@ -123,13 +123,13 @@ export default function LifeAtRinovea() {
                                 </svg>
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 leading-tight">
-                                We Always Aim To Be The No.1 Company In Regards To Customer Satisfaction, And For That, We Strive To Create <span className="font-bold text-gray-900">"Inspiring The Next"</span> With The Pursuit Of Creativity And Technical Expertise.
+                            <h2 className="text-3xl md:text-4xl font-semibold text-foreground/90 leading-tight">
+                                We Always Aim To Be The No.1 Company In Regards To Customer Satisfaction, And For That, We Strive To Create <span className="font-bold text-foreground">"Inspiring The Next"</span> With The Pursuit Of Creativity And Technical Expertise.
                             </h2>
 
                             <div className="space-y-1">
-                                <h3 className="text-2xl font-bold text-gray-900">Management</h3>
-                                <p className="text-gray-600 font-medium font-sans">Rinovea Technology Solutions</p>
+                                <h3 className="text-2xl font-bold text-foreground">Management</h3>
+                                <p className="text-muted-foreground font-medium font-sans">Rinovea Technology Solutions</p>
                             </div>
                         </div>
 
@@ -141,7 +141,7 @@ export default function LifeAtRinovea() {
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border-[60px] border-blue-500/5 rounded-full"></div>
 
                                 {/* Main Large Image */}
-                                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] md:w-[380px] md:h-[380px] rounded-full border-[10px] border-white shadow-2xl overflow-hidden z-20">
+                                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] md:w-[380px] md:h-[380px] rounded-full border-[10px] border-card shadow-2xl overflow-hidden z-20">
                                     <img
                                         src="https://media.licdn.com/dms/image/v2/D4D22AQEKlBq2zBJWAQ/feedshare-shrink_2048_1536/B4DZoAWECPGwA0-/0/1760942383989?e=1773273600&v=beta&t=dBBvhKx8IlXPBaiatyZiXmyPi9pcLuFB_ri3vA18N5w"
                                         alt="Team Meeting"
@@ -150,7 +150,7 @@ export default function LifeAtRinovea() {
                                 </div>
 
                                 {/* Top Small Image */}
-                                <div className="absolute top-10 right-0 w-[200px] h-[200px] md:w-[260px] md:h-[260px] rounded-full border-[10px] border-white shadow-2xl overflow-hidden z-10">
+                                <div className="absolute top-10 right-0 w-[200px] h-[200px] md:w-[260px] md:h-[260px] rounded-full border-[10px] border-card shadow-2xl overflow-hidden z-10">
                                     <img
                                         src="https://i.ibb.co/nqDz1J3j/1760942378760-1.jpg"
                                         alt="Office Event"
@@ -159,7 +159,7 @@ export default function LifeAtRinovea() {
                                 </div>
 
                                 {/* Bottom Small Image */}
-                                <div className="absolute bottom-10 right-10 w-[180px] h-[180px] md:w-[240px] md:h-[240px] rounded-full border-[10px] border-white shadow-2xl overflow-hidden z-30">
+                                <div className="absolute bottom-10 right-10 w-[180px] h-[180px] md:w-[240px] md:h-[240px] rounded-full border-[10px] border-card shadow-2xl overflow-hidden z-30">
                                     <img
                                         src="https://media.licdn.com/dms/image/v2/D4D22AQHfHt4mxjQwjw/feedshare-shrink_2048_1536/B4DZoAWECbHsAw-/0/1760942378793?e=1773273600&v=beta&t=l5KS6xxoxr-hiqCpJACjyflwelMXLjYGb4ndiQaG-AA"
                                         alt="Team Discussion"
@@ -172,13 +172,13 @@ export default function LifeAtRinovea() {
                 </div>
             </section>
             {/* Team Members Section */}
-            <section className="py-24 bg-gray-50 overflow-hidden">
+            <section className="py-24 bg-muted/30 dark:bg-transparent overflow-hidden">
                 <div className="container mx-auto px-4 mb-12">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                             The Brains Behind Our <span className="text-blue-600">Innovation</span>
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-muted-foreground">
                             Our team of creative minds and technical experts is dedicated to delivering excellence and pushing the boundaries of what's possible.
                         </p>
                     </div>
@@ -191,7 +191,7 @@ export default function LifeAtRinovea() {
                                 key={index}
                                 className="inline-block px-4"
                             >
-                                <div className="group relative w-[280px] h-[400px] bg-white rounded-[1.5rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-700 hover:shadow-[0_15px_60px_rgba(59,130,246,0.12)]">
+                                <div className="group relative w-[280px] h-[400px] bg-card rounded-[1.5rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-700 hover:shadow-[0_15px_60px_rgba(59,130,246,0.12)] border border-border">
                                     {/* Member Image */}
                                     <img
                                         src={member.photo}
@@ -200,7 +200,7 @@ export default function LifeAtRinovea() {
                                     />
 
                                     {/* Glassmorphism Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-all duration-700"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent dark:opacity-60 group-hover:opacity-100 transition-all duration-700"></div>
                                     <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 backdrop-blur-[1px]"></div>
 
                                     {/* Content Container */}
@@ -305,15 +305,15 @@ function ExpectSection() {
     ];
 
     return (
-        <section className="py-20 bg-[#eef7ff]">
+        <section className="py-20 bg-muted/30 dark:bg-transparent">
             <div className="container mx-auto px-4 max-w-6xl">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
                     {/* Left Side: Heading */}
                     <div className="lg:w-1/3 text-left">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5 leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5 leading-tight">
                             What Can You Expect <br /> <span className="text-blue-600">From us?</span>
                         </h2>
-                        <p className="text-gray-600 text-base leading-relaxed">
+                        <p className="text-muted-foreground text-base leading-relaxed">
                             We are committed to creating an environment where excellence is recognized, and every team member has the support they need to thrive.
                         </p>
                     </div>
@@ -321,14 +321,14 @@ function ExpectSection() {
                     {/* Right Side: Interactive Tabs & Content */}
                     <div className="lg:w-2/3 flex flex-col md:flex-row items-start gap-0 w-full group/main">
                         {/* Tabs List */}
-                        <div className="flex flex-col w-full md:w-1/2 bg-white/50 backdrop-blur-sm rounded-l-2xl overflow-hidden border-r border-blue-100 shadow-sm">
+                        <div className="flex flex-col w-full md:w-1/2 bg-muted/50 backdrop-blur-sm rounded-l-2xl overflow-hidden border border-border shadow-sm">
                             {expectations.map((item, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setActiveTab(index)}
                                     className={`relative px-7 py-5 text-left transition-all duration-300 flex items-center justify-between cursor-pointer ${activeTab === index
-                                        ? "text-blue-600 bg-white font-bold"
-                                        : "text-gray-500 hover:text-gray-800 hover:bg-white/30"
+                                        ? "text-blue-600 bg-card font-bold"
+                                        : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
                                         }`}
                                 >
                                     <span className="text-base md:text-lg whitespace-nowrap">{item.title}</span>
@@ -340,9 +340,9 @@ function ExpectSection() {
                         </div>
 
                         {/* Content Display Card */}
-                        <div className="w-full md:w-1/2 min-h-[260px] flex items-center bg-white p-8 md:p-10 rounded-r-2xl shadow-[20px_0_40px_rgba(0,0,0,0.02)] border-y border-r border-blue-50">
+                        <div className="w-full md:w-1/2 min-h-[260px] flex items-center bg-card p-8 md:p-10 rounded-r-2xl shadow-[20px_0_40px_rgba(0,0,0,0.02)] border border-border">
                             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                                <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium transition-all duration-300">
+                                <p className="text-base md:text-lg text-foreground/80 leading-relaxed font-medium transition-all duration-300">
                                     {expectations[activeTab].content}
                                 </p>
                             </div>
